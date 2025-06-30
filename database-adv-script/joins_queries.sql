@@ -31,7 +31,7 @@ FROM
 LEFT JOIN
     reviews AS r ON p.property_id = r.property_id
 ORDER BY
-    r.review_id IS NOT NULL DESC, -- Orders properties with reviews first
+    r.review_id IS NOT NULL DESC, -- Sort to show properties with reviews first
     p.property_id; -- Secondary sort to ensure consistent ordering among reviewed/unreviewed properties
 
 
