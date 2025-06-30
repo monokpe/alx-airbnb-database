@@ -29,7 +29,11 @@ SELECT
 FROM
     properties AS p
 LEFT JOIN
-    reviews AS r ON p.property_id = r.property_id;
+    reviews AS r ON p.property_id = r.property_id
+ORDER BY
+    r.review_id IS NOT NULL DESC, -- Orders properties with reviews first
+    p.property_id; -- Secondary sort to ensure consistent ordering among reviewed/unreviewed properties
+
 
 -- 3. FULL OUTER JOIN: Retrieve all users and all bookings, even if the user has no booking or a booking is not linked to a user.
 SELECT
