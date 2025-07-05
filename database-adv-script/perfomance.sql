@@ -29,8 +29,9 @@ FROM
     INNER JOIN properties p ON b.property_id = p.property_id
     INNER JOIN users h ON p.host_id = h.user_id
     LEFT JOIN payments pm ON b.booking_id = pm.booking_id
-ORDER BY 
-    b.created_at DESC;
+WHERE 
+    b.start_date > '2025-01-01'
+    AND p.location = 'Paris';
 
 -- Add index to support ORDER BY
 CREATE INDEX idx_bookings_created_at ON bookings(created_at DESC);
